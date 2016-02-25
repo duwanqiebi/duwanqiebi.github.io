@@ -24,6 +24,8 @@ facebook_username:  duwanqiebi
 # from PR#40, to support local preview for Jekyll 3.0
 gems: [jekyll-paginate]
 
+paginate: 10
+
 # Markdown settings
 # replace redcarpet to kramdown,
 # although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
