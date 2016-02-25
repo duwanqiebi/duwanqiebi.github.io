@@ -7,3 +7,16 @@ description: "独顽且鄙的博客"
 keyword: "JAVA"
 url: "http://huangxuan.me"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
+
+
+# Featured Tags
+featured-tags: true                     # whether or not using Feature-Tags
+featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
+
+# SNS settings
+RSS: false
+weibo_username:     独顽且鄙
+zhihu_username:     张强
+github_username:    duwanqiebi
+#twitter_username:  huxpro
+facebook_username:  duwanqiebi
