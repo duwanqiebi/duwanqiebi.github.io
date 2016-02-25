@@ -16,7 +16,6 @@ featured-condition-size: 1              # A tag will be featured if the size of 
 # SNS settings
 RSS: false
 weibo_username:     独顽且鄙
-zhihu_username:     张强
+zhihu_username:     zhang-qiang-26-87
 github_username:    duwanqiebi
-#twitter_username:  huxpro
-facebook_username:  huxpro
+facebook_username:  duwanqiebi
