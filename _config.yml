@@ -1,0 +1,9 @@
+# Site settings
+title: 独顽且鄙的博客
+#SEOTitle: 独顽且鄙的博客
+header-img: img/home-bg.jpg
+email: 18810295909@qq.com
+description: "独顽且鄙的博客"
+keyword: "JAVA"
+url: "http://huangxuan.me"              # your host, for absolute URL
+baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
