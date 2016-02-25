@@ -15,7 +15,11 @@ featured-condition-size: 1              # A tag will be featured if the size of 
 
 # SNS settings
 RSS: false
-weibo_username:     独顽且鄙
+weibo_username:     duwanqiebi
 zhihu_username:     zhang-qiang-26-87
 github_username:    duwanqiebi
 facebook_username:  duwanqiebi
+
+# Gems
+# from PR#40, to support local preview for Jekyll 3.0
+gems: [jekyll-paginate]
