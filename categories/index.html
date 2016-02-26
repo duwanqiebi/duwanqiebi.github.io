@@ -13,3 +13,12 @@ description: "一生想做浪漫极客"
     {% endfor %}
  </div>
 </ul>
+
+
+<section class="post {% for category in item.categories %}{{ category }} {% endfor %}" itemscope itemprop="blogPost">
+
+	 <a href="{{ site.baseurl }}{{ item.url }}" title="{{ item.title }}" itemprop="url">
+		<time datetime="{{ item.date }}" itemprop="datePublished">{{ item.date | date: "%Y 年 %m 月" }}</time>
+		<h1 itemprop="name">{% if item.title %}{{ item.title }}{% else %}&nbsp;{% endif %}</h1>
+	 </a>
+</section>
