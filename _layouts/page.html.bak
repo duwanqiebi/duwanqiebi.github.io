@@ -89,10 +89,10 @@ layout: default
 				<!-- 分类 -->
 				<section>
 					<h5>CATEGORIES</h5>
-					<ul>
+					<ul class="list-inline">
 						{% for item in site.categories %}
 							{% if item[1] | size != 0 %}
-							<li style="list-style-type:none"><a href="{{ site.baseurl }}/categories/#{{ item[0] }}" title="{{ item[0] }}">{{ item[0] }}<sup>{{ item[1] | size}}</sup></a></li>
+							<li style="list-style-type:none;display: block"><a href="{{ site.baseurl }}/categories/#{{ item[0] }}" title="{{ item[0] }}">{{ item[0] }}<sup>{{ item[1] | size}}</sup></a></li>
 							{% endif %}
 						{% endfor %}
 					</ul>
