@@ -92,7 +92,7 @@ layout: default
 					<ul>
 						{% for item in site.categories %}
 							{% if item[1] | size != 0 %}
-							<li class="tags"><a href="{{ site.baseurl }}/categories/#{{ item[0] }}" title="{{ item[0] }}">{{ item[0] }}<sup>{{ item[1] | size}}</sup></a></li>
+							<li style="list-style-type:none"><a href="{{ site.baseurl }}/categories/#{{ item[0] }}" title="{{ item[0] }}">{{ item[0] }}<sup>{{ item[1] | size}}</sup></a></li>
 							{% endif %}
 						{% endfor %}
 					</ul>
