@@ -42,6 +42,7 @@ layout: default
 						{% endif %}
 					{% endfor %}
 				</ul>
+				{% endif %}
 
                 <!-- Featured Tags -->
                 {% if site.featured-tags %}
