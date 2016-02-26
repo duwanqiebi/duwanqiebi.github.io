@@ -84,6 +84,22 @@ layout: default
                 col-xs-12
                 sidebar-container
             ">
+
+
+				<!-- 分类 -->
+				<section>
+					<h5>CATEGORIES</h5>
+						<ul class="list-inline">
+						{% for item in site.categories %}
+							{% if item[1] | size != 0 %}
+							<li><a href="{{ site.baseurl }}/categories/#{{ item[0] }}" title="{{ item[0] }}">{{ item[0] }}<sup>{{ item[1] | size}}</sup></a></li>
+							{% endif %}
+						{% endfor %}
+						</ul>
+				</section>
+				
+
+
                 <!-- Featured Tags -->
                 {% if site.featured-tags %}
                 <section>
