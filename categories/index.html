@@ -3,17 +3,6 @@ layout: page
 description: "一生想做浪漫极客"
 ---
 
-<ul class="archive-list">
-  <div class="archiveslist archive-float clearfix">
-    {% for category in site.categories  %}
-    <li class="archive-list-item">
-    <a class="archive-list-link" href="#{{ category[0] }}">{{ category[0] }}</a>
-    <span class="archive-list-count">{{ category[1] | size }}</span>
-    </li>
-    {% endfor %}
- </div>
-</ul>
-
 {% for post in site.posts %}
 {% assign item = post %}
 {% assign index = true %}

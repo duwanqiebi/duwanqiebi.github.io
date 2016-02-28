@@ -26,11 +26,3 @@ description: "一生想做浪漫极客"
 </section>
 {% endfor %}
 
-<script>
-
-$(document).ready(function(){
-	
-    
-});
-
-</script>
