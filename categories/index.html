@@ -29,21 +29,7 @@ description: "一生想做浪漫极客"
 <script>
 
 $(document).ready(function(){
-	alert("1");
-    var show_post = function(anchor) {
-        $(".post").hide();
-        var cls = anchor.substr(1);
-        $("." + cls).show();
-        $(".archive-folder").text(cls);
-    }
-    if (document.location.hash) {
-        show_post(document.location.hash);
-    }
-    $('a[href*=#]').click(function() {
-        if (this.hash) {
-            show_post(this.hash);
-        }
-    });
+	
     
 });
 
