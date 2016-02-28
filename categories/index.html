@@ -14,7 +14,9 @@ description: "一生想做浪漫极客"
  </div>
 </ul>
 
-
+{% for post in site.posts %}
+{% assign item = post %}
+{% assign index = true %}
 <section class="post {% for category in item.categories %}{{ category }} {% endfor %}" itemscope itemprop="blogPost">
 
 	 <a href="{{ site.baseurl }}{{ item.url }}" title="{{ item.title }}" itemprop="url">
@@ -22,3 +24,4 @@ description: "一生想做浪漫极客"
 		<h1 itemprop="name">{% if item.title %}{{ item.title }}{% else %}&nbsp;{% endif %}</h1>
 	 </a>
 </section>
+{% endfor %}
