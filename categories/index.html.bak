@@ -3,26 +3,19 @@ layout: page
 description: "一生想做浪漫极客"
 ---
 
-<ul class="archive-list">
-  <div class="archiveslist archive-float clearfix">
-    {% for category in site.categories  %}
-    <li class="archive-list-item">
-    <a class="archive-list-link" href="#{{ category[0] }}">{{ category[0] }}</a>
-    <span class="archive-list-count">{{ category[1] | size }}</span>
-    </li>
-    {% endfor %}
- </div>
-</ul>
-
+<ul>
 {% for post in site.posts %}
 {% assign item = post %}
 {% assign index = true %}
-<section class="post {% for category in item.categories %}{{ category }} {% endfor %}" itemscope itemprop="blogPost">
-
+<!-- <section class="post {% for category in item.categories %}{{ category }} {% endfor %}" itemscope itemprop="blogPost">-->
+     <li class="post {% for category in item.categories %}{{ category }} {% endfor %}" itemscope itemprop="blogPost" style="list-style-type: none;padding: .2em 2em;">
 	 <a href="{{ site.baseurl }}{{ item.url }}" title="{{ item.title }}" itemprop="url">
 		<time datetime="{{ item.date }}" itemprop="datePublished">{{ item.date | date: "%Y 年 %m 月" }}</time>
 		<h1 itemprop="name">{% if item.title %}{{ item.title }}{% else %}&nbsp;{% endif %}</h1>
 	 </a>
-</section>
+	 </li>
+<!--</section>-->
 {% endfor %}
+
+</ul>
 
