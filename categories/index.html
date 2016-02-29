@@ -10,7 +10,7 @@ description: "一生想做浪漫极客"
 <!-- <section class="post {% for category in item.categories %}{{ category }} {% endfor %}" itemscope itemprop="blogPost">-->
      <li class="post {% for category in item.categories %}{{ category }} {% endfor %}" itemscope itemprop="blogPost" style="list-style-type: none;padding: .2em 2em;">
 	 <!--<a href="{{ site.baseurl }}{{ item.url }}" title="{{ item.title }}" itemprop="url">-->
-		<time datetime="{{ item.date }}" itemprop="datePublished">{{ item.date | date: "%Y 年 %m 月" }}</time>
+		<time datetime="{{ item.date }}" itemprop="datePublished">{{ item.date | date: "%Y 年 %m 月 %d 日" }}</time>
 		<a href="{{ site.baseurl }}{{ item.url }}" title="{{ item.title }}" itemprop="url" style="padding: .2em 1em;color: #dd0000;
   text-decoration: none;">
 			{% if item.title %}{{ item.title }}{% else %}&nbsp;{% endif %}
