@@ -15,6 +15,7 @@ featured-condition-size: 1              # A tag will be featured if the size of 
 
 #categories
 categories: true
+highlighter: true
 
 # SNS settings
 RSS: false
