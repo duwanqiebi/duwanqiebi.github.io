@@ -21,7 +21,74 @@ Thymeleaf可以处理web应用或独立应用程序中的任何XML文件，但�
 Thymeleaf的主要目标是提供一种优雅的、格式良好的创建模板的方式。为了实现这一目的，它基于XML标签与属性，执行DOM中预定义的逻辑，而不是直接在模版中编写逻辑代码。
 
 Thymeleaf的体系结构能够快速处理模板。它依靠智能缓存解析文档，以在执行中使用最少的 I/O次数。
+## 导入Thymeleaf示例程序
+从一个例子入手能够快速的理解Thymeleaf的结构和用法。而Thymeleaf官方正好给我们提供了这样一个例子。下载地址：[thymeleafexamples-gtvg](https://github.com/thymeleaf/thymeleafexamples-gtvg)
 
+这是一个虚拟的杂货店网站。网站的实体与业务流程如下：用户(Customers)购买网站的产品并产生订单(Orders)，同时网站也会管理产品的评价(Comments)。![model entities][1]
+
+
+  [1]: http://www.thymeleaf.org/doc/tutorials/2.1/images/usingthymeleaf/gtvg-model.png
+程序的package结构如下图:
+  ![](http://i2.piimg.com/b92189ae4e48e929.png)
+  
+### GTVGFilter
+项目通过GTVGFilter过滤器拦截request，根据requestURL获取相应的控制器(Controller)。
+``` javascript
+private boolean process(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException {
+        
+    try {
+            
+        /*
+         * Query controller/URL mapping and obtain the controller
+         * that will process the request. If no controller is available,
+         * return false and let other filters/servlets process the request.
+         */
+        IGTVGController controller = GTVGApplication.resolveControllerForRequest(request);
+        if (controller == null) {
+            return false;
+        }
+        /*
+         * Obtain the TemplateEngine instance.
+         */
+        TemplateEngine templateEngine = GTVGApplication.getTemplateEngine();
+            
+        /*
+         * Write the response headers
+         */
+        response.setContentType("text/html;charset=UTF-8");
+        response.setHeader("Pragma", "no-cache");
+        response.setHeader("Cache-Control", "no-cache");
+        response.setDateHeader("Expires", 0);
+
+        /*
+         * Execute the controller and process view template,
+         * writing the results to the response writer.
+         */
+        controller.process(
+                request, response, this.servletContext, templateEngine);
+
+        return true;
+            
+    } catch (Exception e) {
+        throw new ServletException(e);
+    }
+        
+}    
+```
+### GTVGApplication
+GTVGApplication类 类似于spring中的容器，它配置了templateEngine并且用一个Map来保存requestURL与对应的控制器类的键值对。GTVGFilter中就是通过它来寻找对应的控制器类的。
+```java
+this.controllersByURL = new HashMap<String, IGTVGController>();
+        this.controllersByURL.put("/", new HomeController());
+        this.controllersByURL.put("/product/list", new ProductListController());
+        this.controllersByURL.put("/product/comments", new ProductCommentsController());
+        this.controllersByURL.put("/order/list", new OrderListController());
+        this.controllersByURL.put("/order/details", new OrderDetailsController());
+        this.controllersByURL.put("/subscribe", new SubscribeController());
+        this.controllersByURL.put("/userprofile", new UserProfileController());
+```
+但是我们的重点并不在这。
 ## 前言
 
 Hux 的 Blog 就这么开通了。
