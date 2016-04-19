@@ -1,0 +1,169 @@
+﻿---
+layout:     post
+categories: [Thymeleaf, 框架学习]
+title:      "Thymeleaf学习(一)"
+subtitle:   "官方实例程序简介"
+date:       2015-01-29 12:00:00
+author:     "独顽且鄙"
+header-img: "img/post-bg-2015.jpg"
+tags:
+    - Thymeleaf
+---
+
+> “Thymeleaf”
+
+
+
+
+---
+
+## Thymeleaf是什么
+Thymeleaf是一个JAVA库，它是一种XML/XHTML/HTML5模板引擎，能够转换一组模板以展示应用产生的数据与文字。
+
+Thymeleaf可以处理web应用或独立应用程序中的任何XML文件，但它更适用于处理web应用中的XHTML/HTML5。
+
+Thymeleaf的主要目标是提供一种优雅的、格式良好的创建模板的方式。为了实现这一目的，它基于XML标签与属性，执行DOM中预定义的逻辑，而不是直接在模版中编写逻辑代码。
+
+Thymeleaf的体系结构能够快速处理模板。它依靠智能缓存解析文档，以在执行中使用最少的 I/O次数。
+## 导入Thymeleaf示例程序
+从一个例子入手能够快速的理解Thymeleaf的结构和用法。而Thymeleaf官方正好给我们提供了这样一个例子。下载地址：[thymeleafexamples-gtvg](https://github.com/thymeleaf/thymeleafexamples-gtvg)
+
+这是一个虚拟的杂货店网站。网站的实体与业务流程如下：用户(Customers)购买网站的产品并产生订单(Orders)，同时网站也会管理产品的评价(Comments)。![model entities][1]
+
+
+  [1]: http://www.thymeleaf.org/doc/tutorials/2.1/images/usingthymeleaf/gtvg-model.png
+程序的package结构如下图:
+  ![](http://i2.piimg.com/b92189ae4e48e929.png)
+  
+### GTVGFilter
+项目通过GTVGFilter过滤器拦截request，根据requestURL获取相应的控制器(Controller)。
+``` javascript
+private boolean process(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException {
+        
+    try {
+            
+        /*
+         * Query controller/URL mapping and obtain the controller
+         * that will process the request. If no controller is available,
+         * return false and let other filters/servlets process the request.
+         */
+        IGTVGController controller = GTVGApplication.resolveControllerForRequest(request);
+        if (controller == null) {
+            return false;
+        }
+        /*
+         * Obtain the TemplateEngine instance.
+         */
+        TemplateEngine templateEngine = GTVGApplication.getTemplateEngine();
+            
+        /*
+         * Write the response headers
+         */
+        response.setContentType("text/html;charset=UTF-8");
+        response.setHeader("Pragma", "no-cache");
+        response.setHeader("Cache-Control", "no-cache");
+        response.setDateHeader("Expires", 0);
+
+        /*
+         * Execute the controller and process view template,
+         * writing the results to the response writer.
+         */
+        controller.process(
+                request, response, this.servletContext, templateEngine);
+
+        return true;
+            
+    } catch (Exception e) {
+        throw new ServletException(e);
+    }
+        
+}    
+```
+### GTVGApplication
+GTVGApplication类 类似于spring中的容器，它配置了templateEngine并且用一个Map来保存requestURL与对应的控制器类的键值对。GTVGFilter中就是通过它来寻找对应的控制器类的。
+```java
+this.controllersByURL = new HashMap<String, IGTVGController>();
+        this.controllersByURL.put("/", new HomeController());
+        this.controllersByURL.put("/product/list", new ProductListController());
+        this.controllersByURL.put("/product/comments", new ProductCommentsController());
+        this.controllersByURL.put("/order/list", new OrderListController());
+        this.controllersByURL.put("/order/details", new OrderDetailsController());
+        this.controllersByURL.put("/subscribe", new SubscribeController());
+        this.controllersByURL.put("/userprofile", new UserProfileController());
+```
+但是我们的重点并不在这。
+#### 创建并配置模板引擎(Template Engine)
+```java
+public class GTVGApplication {
+  
+    
+    ...
+    private static TemplateEngine templateEngine;
+    ...
+    
+    
+    static {
+        ...
+        initializeTemplateEngine();
+        ...
+    }
+    
+    
+    private static void initializeTemplateEngine() {
+        
+        ServletContextTemplateResolver templateResolver = 
+            new ServletContextTemplateResolver();
+        // XHTML is the default mode, but we set it anyway for better understanding of code
+        templateResolver.setTemplateMode("XHTML");
+        // This will convert "home" to "/WEB-INF/templates/home.html"
+        templateResolver.setPrefix("/WEB-INF/templates/");
+        templateResolver.setSuffix(".html");
+        // Template cache TTL=1h. If not set, entries would be cached until expelled by LRU
+        templateResolver.setCacheTTLMs(3600000L);
+        
+        templateEngine = new TemplateEngine();
+        templateEngine.setTemplateResolver(templateResolver);
+        
+    }
+    
+    ...
+
+}
+```
+##### (1)模板解析器(The Template Resolver)
+```java
+ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver();
+```
+模板解析器是继承了Thymeleaf API中的org.thymeleaf.templateresolver.ITemplateResolver接口的一组对象：
+```java
+public interface ITemplateResolver {
+
+    ...
+  
+    /*
+     * Templates are resolved by String name (templateProcessingParameters.getTemplateName())
+     * Will return null if template cannot be handled by this template resolver.
+     */
+    public TemplateResolution resolveTemplate(
+            TemplateProcessingParameters templateProcessingParameters);
+
+}
+``` 
+这些对象（即模板解析器）主要负责定义模板的访问方式。在示例程序中，我们使用的org.thymeleaf.templateresolver.ServletContextTemplateResolver是把模板以Servlet上下文的形式访问的。接着我们可以给模板解析器设置一系列参数，例如上面代码中的：模板模式(setTemplateMode),前缀后缀(setPrefix,setSuffix),缓存时间()等等。
+##### (2)模板引擎(The Template Engine)
+例子中初始化并配置模板引擎只用了两行代码。
+```java
+templateEngine = new TemplateEngine();
+templateEngine.setTemplateResolver(templateResolver);
+``` 
+我们需要做的仅仅是将模板解析器的对象设置给模板引擎。
+## 运行Thymeleaf示例程序
+
+将实例程序发布到服务器中，输入网址就可以看到运行的结果了。
+![](http://i2.piimg.com/487cf536f20605b6.png)
+
+
+
+
+
