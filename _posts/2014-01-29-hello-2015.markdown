@@ -13,6 +13,15 @@ tags:
 > “Yeah It's on. ”
 
 
+## Thymeleaf是什么
+Thymeleaf是一个JAVA库，它是一种XML/XHTML/HTML5模板引擎，能够转换一组模板以展示应用产生的数据与文字。
+
+Thymeleaf可以处理web应用或独立应用程序中的任何XML文件，但它更适用于处理web应用中的XHTML/HTML5。
+
+Thymeleaf的主要目标是提供一种优雅的、格式良好的创建模板的方式。为了实现这一目的，它基于XML标签与属性，执行DOM中预定义的逻辑，而不是直接在模版中编写逻辑代码。
+
+Thymeleaf的体系结构能够快速处理模板。它依靠智能缓存解析文档，以在执行中使用最少的 I/O次数。
+
 ## 前言
 
 Hux 的 Blog 就这么开通了。
