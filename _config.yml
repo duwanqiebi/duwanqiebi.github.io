@@ -30,6 +30,11 @@ gems: [jekyll-paginate]
 
 paginate: 10
 
+
+highlighter: rouge
+permalink: pretty
+#exclude: ["less","node_modules","Gruntfile.js","package.json","README.md","README.zh.md"]
+#anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
 # Markdown settings
 # replace redcarpet to kramdown,
 # although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
