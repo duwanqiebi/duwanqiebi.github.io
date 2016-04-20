@@ -10,12 +10,6 @@ tags:
     - Thymeleaf
 ---
 
-> “Thymeleaf”
-
-
-
-
----
 
 ## Thymeleaf是什么
 Thymeleaf是一个JAVA库，它是一种XML/XHTML/HTML5模板引擎，能够转换一组模板以展示应用产生的数据与文字。
@@ -37,7 +31,7 @@ Thymeleaf的体系结构能够快速处理模板。它依靠智能缓存解析�
   
 ### GTVGFilter
 项目通过GTVGFilter过滤器拦截request，根据requestURL获取相应的控制器(Controller)。
-``` javascript
+<pre class="prettyprint linenums">
 private boolean process(HttpServletRequest request, HttpServletResponse response)
         throws ServletException {
         
@@ -79,10 +73,10 @@ private boolean process(HttpServletRequest request, HttpServletResponse response
     }
         
 }    
-```
+</pre>
 ### GTVGApplication
 GTVGApplication类 类似于spring中的容器，它配置了templateEngine并且用一个Map来保存requestURL与对应的控制器类的键值对。GTVGFilter中就是通过它来寻找对应的控制器类的。
-```java
+<pre class="prettyprint linenums">
 this.controllersByURL = new HashMap<String, IGTVGController>();
         this.controllersByURL.put("/", new HomeController());
         this.controllersByURL.put("/product/list", new ProductListController());
@@ -91,10 +85,10 @@ this.controllersByURL = new HashMap<String, IGTVGController>();
         this.controllersByURL.put("/order/details", new OrderDetailsController());
         this.controllersByURL.put("/subscribe", new SubscribeController());
         this.controllersByURL.put("/userprofile", new UserProfileController());
-```
+</pre>
 但是我们的重点并不在这。
 #### 创建并配置模板引擎(Template Engine)
-```java
+<pre class="prettyprint linenums">
 public class GTVGApplication {
   
     
@@ -130,13 +124,13 @@ public class GTVGApplication {
     ...
 
 }
-```
+</pre>
 ##### (1)模板解析器(The Template Resolver)
-```java
+<pre class="prettyprint linenums">
 ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver();
-```
+</pre>
 模板解析器是继承了Thymeleaf API中的org.thymeleaf.templateresolver.ITemplateResolver接口的一组对象：
-```java
+<pre class="prettyprint linenums">
 public interface ITemplateResolver {
 
     ...
@@ -149,14 +143,14 @@ public interface ITemplateResolver {
             TemplateProcessingParameters templateProcessingParameters);
 
 }
-``` 
+</pre> 
 这些对象（即模板解析器）主要负责定义模板的访问方式。在示例程序中，我们使用的org.thymeleaf.templateresolver.ServletContextTemplateResolver是把模板以Servlet上下文的形式访问的。接着我们可以给模板解析器设置一系列参数，例如上面代码中的：模板模式(setTemplateMode),前缀后缀(setPrefix,setSuffix),缓存时间()等等。
 ##### (2)模板引擎(The Template Engine)
 例子中初始化并配置模板引擎只用了两行代码。
-```java
+<pre class="prettyprint linenums">
 templateEngine = new TemplateEngine();
 templateEngine.setTemplateResolver(templateResolver);
-``` 
+</pre> 
 我们需要做的仅仅是将模板解析器的对象设置给模板引擎。
 ## 运行Thymeleaf示例程序
 
