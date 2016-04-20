@@ -75,7 +75,53 @@ private boolean process(HttpServletRequest request, HttpServletResponse response
     }
         
 }    
-``` java
+``` 
+
+
+
+```
+private boolean process(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException {
+        
+    try {
+            
+        /*
+         * Query controller/URL mapping and obtain the controller
+         * that will process the request. If no controller is available,
+         * return false and let other filters/servlets process the request.
+         */
+        IGTVGController controller = GTVGApplication.resolveControllerForRequest(request);
+        if (controller == null) {
+            return false;
+        }
+        /*
+         * Obtain the TemplateEngine instance.
+         */
+        TemplateEngine templateEngine = GTVGApplication.getTemplateEngine();
+            
+        /*
+         * Write the response headers
+         */
+        response.setContentType("text/html;charset=UTF-8");
+        response.setHeader("Pragma", "no-cache");
+        response.setHeader("Cache-Control", "no-cache");
+        response.setDateHeader("Expires", 0);
+
+        /*
+         * Execute the controller and process view template,
+         * writing the results to the response writer.
+         */
+        controller.process(
+                request, response, this.servletContext, templateEngine);
+
+        return true;
+            
+    } catch (Exception e) {
+        throw new ServletException(e);
+    }
+        
+}    
+```
 ### GTVGApplication
 GTVGApplication类 类似于spring中的容器，它配置了templateEngine并且用一个Map来保存requestURL与对应的控制器类的键值对。GTVGFilter中就是通过它来寻找对应的控制器类的。
 ```java
