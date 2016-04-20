@@ -33,7 +33,7 @@ Thymeleaf的体系结构能够快速处理模板。它依靠智能缓存解析�
   
 ### GTVGFilter
 项目通过GTVGFilter过滤器拦截request，根据requestURL获取相应的控制器(Controller)。
-``` javascript
+``` java
 private boolean process(HttpServletRequest request, HttpServletResponse response)
         throws ServletException {
         
@@ -75,7 +75,7 @@ private boolean process(HttpServletRequest request, HttpServletResponse response
     }
         
 }    
-```
+``` java
 ### GTVGApplication
 GTVGApplication类 类似于spring中的容器，它配置了templateEngine并且用一个Map来保存requestURL与对应的控制器类的键值对。GTVGFilter中就是通过它来寻找对应的控制器类的。
 ```java
@@ -152,7 +152,7 @@ public interface ITemplateResolver {
 ```java
 templateEngine = new TemplateEngine();
 templateEngine.setTemplateResolver(templateResolver);
-``` 
+```java
 我们需要做的仅仅是将模板解析器的对象设置给模板引擎。
 ## 运行Thymeleaf示例程序
 
