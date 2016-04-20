@@ -12,7 +12,7 @@ tags:
 
 > “Yeah It's on. ”
 
-<pre class="prettyprint">
+<pre class="prettyprint linenums">
 	public static void main(String[] args){
 		System.out.println("1");
 	}
