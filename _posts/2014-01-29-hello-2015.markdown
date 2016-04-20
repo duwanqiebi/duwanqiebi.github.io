@@ -12,6 +12,13 @@ tags:
 
 > “Yeah It's on. ”
 
+<pre class="prettyprint">
+	public static void main(String[] args){
+		System.out.println("1");
+	}
+</pre>
+
+
 
 ## Thymeleaf是什么
 Thymeleaf是一个JAVA库，它是一种XML/XHTML/HTML5模板引擎，能够转换一组模板以展示应用产生的数据与文字。
