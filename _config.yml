@@ -42,3 +42,12 @@ permalink: pretty
 markdown: kramdown
 kramdown:
   input: GFM 
+  
+  
+ # Friends
+friends: [
+    {
+        title: "Zark's Blog",
+        href: "http://zark.space/"
+    }
+]
