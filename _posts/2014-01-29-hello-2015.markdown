@@ -22,22 +22,22 @@ Thymeleaf的体系结构能够快速处理模板。它依靠智能缓存解析�
 ## 相关资料
 
 ### Thymeleaf文档
--[在线阅读](http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html),[PDF](http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.pdf),[EPUB](http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.pdf),[MOBI](http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.mobi)
--日语版(非官方):[在线阅读](http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf_ja.html),[PDF](http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf_ja.pdf),[EPUB](http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf_ja.epub),[MOBI](http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf_ja.mobi)
--示例程序:[Good Thymes Virtual Grocery](https://github.com/thymeleaf/thymeleafexamples-gtvg)
+- [在线阅读](http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html),[PDF](http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.pdf),[EPUB](http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.pdf),[MOBI](http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.mobi)
+- 日语版(非官方):[在线阅读](http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf_ja.html),[PDF](http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf_ja.pdf),[EPUB](http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf_ja.epub),[MOBI](http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf_ja.mobi)
+- 示例程序:[Good Thymes Virtual Grocery](https://github.com/thymeleaf/thymeleafexamples-gtvg)
 
 ### Thymeleaf + Spring文档
--[在线阅读](http://www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.html),[PDF](http://www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.pdf),[EPUB](http://www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.epub),[MOBI](http://www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.mobi)
--示例程序:[Spring Thyme Seed Starter Manager](https://github.com/thymeleaf/thymeleafexamples-stsm)
+- [在线阅读](http://www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.html),[PDF](http://www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.pdf),[EPUB](http://www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.epub),[MOBI](http://www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.mobi)
+- 示例程序:[Spring Thyme Seed Starter Manager](https://github.com/thymeleaf/thymeleafexamples-stsm)
 
 ### Thymeleaf扩展
 在这个文档里可以学到如何去扩展Thymeleaf扩展，可以自定义自己的Thymeleaf模板方言，处理器，实体等等。
--[在线阅读](http://www.thymeleaf.org/doc/tutorials/2.1/extendingthymeleaf.html),[PDF](http://www.thymeleaf.org/doc/tutorials/2.1/extendingthymeleaf.pdf),[EPUB](http://www.thymeleaf.org/doc/tutorials/2.1/extendingthymeleaf.epub),[MOBI](http://www.thymeleaf.org/doc/tutorials/2.1/extendingthymeleaf.mobi)
--示例程序:[Extrathyme - Thymeland's football website](https://github.com/thymeleaf/thymeleafexamples-extrathyme)
+- [在线阅读](http://www.thymeleaf.org/doc/tutorials/2.1/extendingthymeleaf.html),[PDF](http://www.thymeleaf.org/doc/tutorials/2.1/extendingthymeleaf.pdf),[EPUB](http://www.thymeleaf.org/doc/tutorials/2.1/extendingthymeleaf.epub),[MOBI](http://www.thymeleaf.org/doc/tutorials/2.1/extendingthymeleaf.mobi)
+- 示例程序:[Extrathyme - Thymeland's football website](https://github.com/thymeleaf/thymeleafexamples-extrathyme)
 
 ### The Thymeleaf交互教学
 这个有点类似OJ，可以在网站上写代码并且可以看到效果，是一种很好的学习Thymeleaf的方式。
--[Access online](http://itutorial.thymeleaf.org/)
+- [Access online](http://itutorial.thymeleaf.org/)
 
 ## 导入Thymeleaf示例程序
 从一个例子入手能够快速的理解Thymeleaf的结构和用法。而Thymeleaf官方正好给我们提供了这样一个例子。下载地址：[thymeleafexamples-gtvg](https://github.com/thymeleaf/thymeleafexamples-gtvg)
