@@ -31,9 +31,9 @@ gems: [jekyll-paginate]
 paginate: 10
 
 # Duoshuo settings
-duoshuo_username: huxblog
+duoshuo_username: 459798907
 # Share component is depend on Comment so we can NOT use share only.
-duoshuo_share: true 
+duoshuo_share: false 
 
 
 highlighter: rouge
