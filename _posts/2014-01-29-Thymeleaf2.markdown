@@ -22,3 +22,24 @@ tags:
 <pre class="prettyprint linenums html">
 &lt;p th:text="#{home.welcome}"&gt;Welcome to our grocery store!&lt;/p&gt;
 </pre>
+
+上面是官方例子中home.html中的一行代码。模板引擎工作时，标准信息解析器(standard message resolver)会在home.html同目录下同名的property文件中寻找相应的key，例如：
+
+- /WEB-INF/templates/home_en.properties :英语property文件
+- /WEB-INF/templates/home_es.properties :西班牙语property文件
+- /WEB-INF/templates/home_pt_BR.properties : 葡萄牙语property文件
+- /WEB-INF/templates/home.properties :默认环境
+
+thymeleaf会根据当前环境的语言设置(locale)来获得相应语言环境的资源文件，如果找不到，则使用默认的资源文件，即home.properties。
+
+接着我们可以看看home_en.properties中对home.welocme的配置。
+<pre class="prettyprint linenums html">
+home.welcome = Welcome to our grocery store!
+</pre>
+
+### th:utext
+
+我们使用th:text已经可以显示一些基本的信息了，但是还有一些特殊的情况，例如我们想把信息中的一些字加粗:
+<pre class="prettyprint linenums html">
+&lt;p th:text="#{home.welcome}"&gt;Welcome to our grocery store，&lt;b&gt;duwanqiebi&lt;/b&gt;!&lt;/p&gt;
+</pre>
