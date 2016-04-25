@@ -1,7 +1,7 @@
 ---
 layout:     post
 category: [Thymeleaf, 框架学习]
-title:      "Thymeleaf学习(二)"
+title:      "Thymeleaf学习(一)"
 subtitle:   "官方实例程序简介"
 date:       2016-04-15 12:00:00
 author:     "独顽且鄙"
@@ -9,6 +9,8 @@ header-img: "img/post-bg-2015.jpg"
 tags:
     - Thymeleaf
 ---
+
+
 ## Message
 
 > Externalizing text is extracting fragments of template code out of template files so that they can be kept in specific separate files (typically .properties files) and that they can be easily substituted by equivalent texts written in other languages (a process called internationalization or simply i18n). Externalized fragments of text are usually called “messages”.
