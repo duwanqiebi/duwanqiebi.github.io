@@ -99,13 +99,13 @@ Established locale country: &lt;span th:text="${#locale.country}"&gt;US&lt;/span
 [Appendix B: Expression Utility Objects](http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html#appendix-b-expression-utility-objects)对这些对象做了非常详细的解释。
 
 
-##选择表达式(Expressions on selections)
+## 选择表达式(Expressions on selections)
 
-选择表达式通过使用*{...}语法来选取当前对象的属性,当前对象通过th:object属性来指定。例如userprofile.html中：
+选择表达式通过使用** *{...}**语法来选取当前对象的属性,当前对象通过**th:object**属性来指定。例如userprofile.html中：
 <pre class="prettyprint linenums">
-<div th:object="${session.user}">
-    <p>Name: <span th:text="*{firstName}">Sebastian</span>.</p>
-    <p>Surname: <span th:text="*{lastName}">Pepper</span>.</p>
-    <p>Nationality: <span th:text="*{nationality}">Saturn</span>.</p>
-</div>
+&lt;div th:object="${session.user}"&gt;
+    &lt;p&gt;Name: &lt;span th:text="*{firstName}"&gt;Sebastian&lt;/span&gt;.&lt;/p&gt;
+    &lt;p&gt;Surname: &lt;span th:text="*{lastName}"&gt;Pepper&lt;/span&gt;.&lt;/p&gt;
+    &lt;p&gt;Nationality: &lt;span th:text="*{nationality}"&gt;Saturn&lt;/span&gt;.&lt;/p&gt;
+&lt;/div&gt;
 </pre>
