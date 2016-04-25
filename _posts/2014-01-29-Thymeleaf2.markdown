@@ -20,5 +20,5 @@ tags:
 ### th:text
 
 <pre class="prettyprint linenums html">
-<p th:text="#{home.welcome}">Welcome to our grocery store!</p>
+&lt;p th:text="#{home.welcome}"gt;Welcome to our grocery store!&lt;/pgt;
 </pre>
