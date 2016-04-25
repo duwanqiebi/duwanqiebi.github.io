@@ -49,6 +49,51 @@ home.welcome = Welcome to our grocery store!
 </pre>
 
 可以看到,<b>标签被转义成&amplt;b&ampgt;,但是这并不是我们想要看到的。所以，我们可以使用th:utext来防止标签被转义。
-<pre class="prettyprint linenums html">
+<pre class="prettyprint linenums">
 &lt;p th:utext="#{home.welcome}"&gt;Welcome to our grocery store，&lt;b&gt;duwanqiebi&lt;/b&gt;!&lt;/p&gt;
 </pre>
+
+# thymeleaf标准语法
+
+##变量
+thymeleaf模板中可以通过${...}表达式来引用上下文中的对象。
+<pre class="prettyprint linenums">
+&lt;span th:text="${today}"&gt;13 february 2011&lt;/span&gt;
+</pre>
+
+### 基本对象(Expression Basic Objects)
+
+我们可以使用thymeleaf封装好的一些对象来提高表达式的灵活性，这些对象通过#来引用。
+
+> - **#ctx:** the context object.
+> - **#vars:** the context variables.
+> - **#locale:** the context locale.
+> - **#httpServletRequest:** (only in Web Contexts) the HttpServletRequest object.
+> - **#httpSession:** (only in Web Contexts) the HttpSession object.
+
+例如：
+<pre class="prettyprint linenums">
+Established locale country: &lt;span th:text="${#locale.country}"&gt;US&lt;/span&gt;
+</pre>
+
+[Appendix A: Expression Basic Objects](http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html#appendix-a-expression-basic-objects)中可以具体了解到这些对象。
+
+### 功能对象(Expression Utility Objects)
+
+除了上面的那些基本对象，Thymeleaf还提供了一组功能性对象，这些功能性对象将会帮我们完成一些表达式中一些常用的功能。
+
+> - **#dates:** utility methods for java.util.Date objects: formatting, component extraction, etc.
+> - **#calendars:** analogous to #dates, but for java.util.Calendar objects.
+> - **#numbers:** utility methods for formatting numeric objects.
+> - **#strings:** utility methods for String objects: contains, startsWith, prepending/appending, etc.
+> - **#objects:** utility methods for objects in general.
+> - **#bools:** utility methods for boolean evaluation.
+> - **#arrays:** utility methods for arrays.
+> - **#lists:** utility methods for lists.
+> - **#sets:** utility methods for sets.
+> - **#maps:** utility methods for maps.
+> - **#aggregates:** utility methods for creating aggregates on arrays or collections.
+> - **#messages:** utility methods for obtaining externalized messages inside variables expressions, in the same way as they would be obtained using #{…} syntax.
+> - **#ids:** utility methods for dealing with id attributes that might be repeated (for example, as a result of an iteration).
+
+[Appendix B: Expression Utility Objects](http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html#appendix-b-expression-utility-objects)对这些对象做了非常详细的解释。
