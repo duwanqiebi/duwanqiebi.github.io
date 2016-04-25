@@ -101,7 +101,7 @@ Established locale country: &lt;span th:text="${#locale.country}"&gt;US&lt;/span
 
 ## 选择表达式(Expressions on selections)
 
-选择表达式通过使用** *{...}** 语法来选取当前对象的属性,当前对象通过**th:object** 属性来指定。例如userprofile.html中：
+选择表达式通过使用***{...}** 语法来选取当前对象的属性,当前对象通过**th:object** 属性来指定。例如userprofile.html中：
 <pre class="prettyprint linenums">
 &lt;div th:object="${session.user}"&gt;
     &lt;p&gt;Name: &lt;span th:text="*{firstName}"&gt;Sebastian&lt;/span&gt;.&lt;/p&gt;
