@@ -55,7 +55,7 @@ home.welcome = Welcome to our grocery store!
 
 # thymeleaf标准语法
 
-##变量
+## 变量
 thymeleaf模板中可以通过${...}表达式来引用上下文中的对象。
 <pre class="prettyprint linenums">
 &lt;span th:text="${today}"&gt;13 february 2011&lt;/span&gt;
