@@ -1,7 +1,7 @@
 ---
 layout:     post
 category: [Thymeleaf, 框架学习]
-title:      "Thymeleaf学习(一)"
+title:      "Thymeleaf学习(二)"
 subtitle:   "官方实例程序简介"
 date:       2016-04-15 12:00:00
 author:     "独顽且鄙"
@@ -20,5 +20,5 @@ tags:
 ### th:text
 
 <pre class="prettyprint linenums html">
-&lt;p th:text="#{home.welcome}"gt;Welcome to our grocery store!&lt;/pgt;
+&lt;p th:text="#{home.welcome}"&gt;Welcome to our grocery store!&lt;/p&gt;
 </pre>
