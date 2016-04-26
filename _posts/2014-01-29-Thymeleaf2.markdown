@@ -130,7 +130,7 @@ Established locale country: &lt;span th:text="${#locale.country}"&gt;US&lt;/span
   &lt;p&gt;Surname: &lt;span th:text="*{session.user.surname}"&gt;Pepper&lt;/span&gt;.&lt;/p&gt;
   &lt;p&gt;Nationality: &lt;span th:text="*{session.user.nationality}"&gt;Saturn&lt;/span&gt;.&lt;/p&gt;
 &lt;/div&gt;
-<pre>
+</pre>
 
 ## URL链接(Link URLs)
 
@@ -143,7 +143,7 @@ url通过**@{...}** 语法在模板中声明，其中可以放入任何表达式
   &lt;li&gt;&lt;a href="subscribe.html" th:href="@{/subscribe}"&gt;Subscribe to our Newsletter&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="userprofile.html" th:href="@{/userprofile}"&gt;See User Profile&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-<pre>
+</pre>
 
 ##常量(Literals)
 
@@ -156,5 +156,5 @@ url通过**@{...}** 语法在模板中声明，其中可以放入任何表达式
   The year is &lt;span th:text="2013"&gt;1492&lt;/span&gt;.
   In two years, it will be &lt;span th:text="2013 + 2"&gt;1494&lt;/span&gt;.
 &lt;/p&gt;
-<pre>
+</pre>
 
