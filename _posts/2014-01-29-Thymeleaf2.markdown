@@ -109,3 +109,21 @@ Established locale country: &lt;span th:text="${#locale.country}"&gt;US&lt;/span
     &lt;p&gt;Nationality: &lt;span th:text="*{nationality}"&gt;Saturn&lt;/span&gt;.&lt;/p&gt;
 &lt;/div&gt;
 </pre>
+
+当指定了**th:object** 时，**#object** 表达式也可以使用。同时**${}** 表达式可以与***{...}**表达式混合使用，例如:
+<pre class="prettyprint linenums">
+&lt;div th:object="${session.user}"&gt;
+  &lt;p&gt;Name: &lt;span th:text="${#object.firstName}"&gt;Sebastian&lt;/span&gt;.&lt;/p&gt;
+  &lt;p&gt;Surname: &lt;span th:text="${session.user.lastName}"&gt;Pepper&lt;/span&gt;.&lt;/p&gt;
+  &lt;p&gt;Nationality: &lt;span th:text="*{nationality}"&gt;Saturn&lt;/span&gt;.&lt;/p&gt;
+&lt;/div&gt;
+</pre>
+
+当没有指定**th:object** 时，**${}** 表达式与***{...}**表达式是通用的，两者可以互换。
+<pre class="prettyprint linenums">
+&lt;div&gt;
+  &lt;p&gt;Name: &lt;span th:text="*{session.user.name}"&gt;Sebastian&lt;/span&gt;.&lt;/p&gt;
+  &lt;p&gt;Surname: &lt;span th:text="*{session.user.surname}"&gt;Pepper&lt;/span&gt;.&lt;/p&gt;
+  &lt;p&gt;Nationality: &lt;span th:text="*{session.user.nationality}"&gt;Saturn&lt;/span&gt;.&lt;/p&gt;
+&lt;/div&gt;
+<pre>
