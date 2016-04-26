@@ -48,9 +48,11 @@ home.welcome = Welcome to our grocery store!
 &lt;p th:text="#{home.welcome}"&gt;Welcome to our grocery store，&amplt;b&ampgt;duwanqiebi&amplt;/b&ampgt;!&lt;/p&gt;
 </pre>
 
-可以看到,&lt;b>标签被转义成&amplt;b&ampgt;,但是这并不是我们想要看到的。所以，我们可以使用**th:utext** 来防止标签被转义。
+可以看到,&lt;b>标签被转义成&amp;lt;b&amp;gt;,但是这并不是我们想要看到的。所以，我们可以使用**th:utext** 来防止标签被转义。
 <pre class="prettyprint linenums">
-&lt;p th:utext="#{home.welcome}"&gt;Welcome to our grocery store，&lt;b&gt;duwanqiebi&lt;/b&gt;!&lt;/p&gt;
+&lt;p th:utext="#{home.welcome}"&gt;
+	Welcome to our grocery store，&lt;b&gt;duwanqiebi&lt;/b&gt;!
+&lt;/p&gt;
 </pre>
 
 # thymeleaf标准语法
