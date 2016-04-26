@@ -45,7 +45,9 @@ home.welcome = Welcome to our grocery store!
 </pre>
 如果使用th:text标签，模板的解析结果就会像下面这样：
 <pre class="prettyprint linenums html">
-&lt;p th:text="#{home.welcome}"&gt;Welcome to our grocery store，&amplt;b&ampgt;duwanqiebi&amplt;/b&ampgt;!&lt;/p&gt;
+&lt;p th:text="#{home.welcome}"&gt;
+	Welcome to our grocery store，&amplt;b&ampgt;duwanqiebi&amplt;/b&ampgt;!
+&lt;/p&gt;
 </pre>
 
 可以看到,&lt;b>标签被转义成&amp;lt;b&amp;gt;,但是这并不是我们想要看到的。所以，我们可以使用**th:utext** 来防止标签被转义。
