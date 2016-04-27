@@ -138,10 +138,18 @@ url通过**@{...}** 语法在模板中声明，其中可以放入任何表达式
 <pre class="prettyprint linenums">
 &lt;p&gt;Please select an option&lt;/p&gt;
 &lt;ol&gt;
-  &lt;li&gt;&lt;a href="product/list.html" th:href="@{/product/list}"&gt;Product List&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="order/list.html" th:href="@{/order/list}"&gt;Order List&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="subscribe.html" th:href="@{/subscribe}"&gt;Subscribe to our Newsletter&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="userprofile.html" th:href="@{/userprofile}"&gt;See User Profile&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;
+	&lt;a href="product/list.html" th:href="@{/product/list}"&gt;Product List&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+	&lt;a href="order/list.html" th:href="@{/order/list}"&gt;Order List&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+	&lt;a href="subscribe.html" th:href="@{/subscribe}"&gt;Subscribe to our Newsletter&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+	&lt;a href="userprofile.html" th:href="@{/userprofile}"&gt;See User Profile&lt;/a&gt;
+  &lt;/li&gt;
 &lt;/ol&gt;
 </pre>
 
@@ -152,7 +160,7 @@ url通过**@{...}** 语法在模板中声明，其中可以放入任何表达式
 这个就是把从配置文件中读取key的方法变成了常量值。例：
 <pre class="prettyprint linenums">
 &lt;p&gt;
-  Now you are looking at a &lt;span th:text="'working web application'"&gt;template file&lt;/span&gt;.
+  &lt;span th:text="'working web application'"&gt;template file&lt;/span&gt;.
   The year is &lt;span th:text="2013"&gt;1492&lt;/span&gt;.
   In two years, it will be &lt;span th:text="2013 + 2"&gt;1494&lt;/span&gt;.
 &lt;/p&gt;
@@ -166,3 +174,4 @@ url通过**@{...}** 语法在模板中声明，其中可以放入任何表达式
 &lt;div th:if="${user.isAdmin()} == false"&gt; ...
 &lt;div th:if="${variable.something} == null"&gt; ...
 </pre>
+
