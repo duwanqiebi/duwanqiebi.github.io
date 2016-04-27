@@ -158,3 +158,11 @@ url通过**@{...}** 语法在模板中声明，其中可以放入任何表达式
 &lt;/p&gt;
 </pre>
 
+### 布尔值与null常量
+
+布尔值常量就是**true** 和**false** ,null常量就是**null** ，使用方式例：
+
+<pre class="prettyprint linenums">
+&lt;div th:if="${user.isAdmin()} == false"&gt; ...
+&lt;div th:if="${variable.something} == null"&gt; ...
+</pre>
