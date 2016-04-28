@@ -219,3 +219,19 @@ thymeleaf有两个特殊的属性**th:alt-title** ，**th:lang-xmllang** 能够�
 &lt;img src="../../images/gtvglogo.png" 
      th:src="@{/images/gtvglogo.png}" th:alt-title="#{logo}" /&gt;
 </pre>
+
+### Appending and prepending
+
+**th:attrappend** ,**th:attrprepend** 两个属性用来在原有属性的条件下添加。例:
+<pre class="prettyprint linenums">
+&lt;input type="button" value="Do it!" class="btn" th:attrappend="class=${' ' + cssStyle}" /&gt;
+</pre>
+假设我们把cssStyle变量的值设为"warning"，这样模板的解析结果会如下：
+<pre class="prettyprint linenums">
+&lt;input type="button" value="Do it!" class="btn warning" /&gt;
+</pre>
+
+thymeleaf同样将两个比较常用的属性单独提取出来：**th:classappend** ，**th:styleappend** ，例：
+<pre class="prettyprint linenums">
+&lt;tr th:each="prod : ${prods}" class="row" th:classappend="${prodStat.odd}? 'odd'"&gt;
+</pre>
