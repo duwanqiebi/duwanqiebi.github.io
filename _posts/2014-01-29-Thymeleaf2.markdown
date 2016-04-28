@@ -187,7 +187,7 @@ url通过**@{...}** 语法在模板中声明，其中可以放入任何表达式
 
 ## 设置标签属性值(Setting Attribute Values)
 
-### 设置任意属性值
+### 设置属性值--通用方法
 
 **th:attr** 可以设置任意属性的值，用法如下：
 <pre class="prettyprint linenums">
@@ -202,3 +202,12 @@ url通过**@{...}** 语法在模板中声明，其中可以放入任何表达式
 &lt;/form&gt;
 </pre>
 
+### 设置属性值--指定方法
+
+如果有一个特别常用的属性，每一次都要用**th:attr** 设置属性就会显得特别麻烦、臃肿。所以thymeleaf提供了一些属性来解决这个问题。
+<pre class="prettyprint linenums">
+&lt;form action="subscribe.html" th:action="@{/subscribe}"&gt;
+</pre>
+
+还有很多可以这样设置的属性：
+![](http://i3.piimg.com/28300e22cf736149.png)
