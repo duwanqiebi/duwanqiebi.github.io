@@ -10,6 +10,7 @@ tags:
     - Thymeleaf
 ---
 
+# thymeleaf标准语法
 
 ## Message
 
@@ -56,8 +57,6 @@ home.welcome = Welcome to our grocery store!
 	Welcome to our grocery store，&lt;b&gt;duwanqiebi&lt;/b&gt;!
 &lt;/p&gt;
 </pre>
-
-# thymeleaf标准语法
 
 ## 变量
 thymeleaf模板中可以通过${...}表达式来引用上下文中的对象。
@@ -185,4 +184,21 @@ url通过**@{...}** 语法在模板中声明，其中可以放入任何表达式
 
 - **+** 操作符可用于两个数字相加，也可用于字符串的相连
 - **>** ，**<** ，**>=** ，**<=** 在模板中需要转义
+
+## 设置标签属性值(Setting Attribute Values)
+
+### 设置任意属性值
+
+**th:attr** 可以设置任意属性的值，用法如下：
+<pre class="prettyprint linenums">
+&lt;form action="subscribe.html" th:attr="action=@{/subscribe}"&gt;
+  &lt;fieldset&gt;
+    &lt;input type="text" name="email" /&gt;
+    &lt;input type="submit" value="Subscribe me!" th:attr="value=#{subscribe.submit}"/&gt;
+  &lt;/fieldset&gt;
+  &lt;!-- 一次设置多个属性值 --&gt;
+  &lt;img src="../../images/gtvglogo.png" 
+     th:attr="src=@{/images/gtvglogo.png},title=#{logo},alt=#{logo}" /&gt;
+&lt;/form&gt;
+</pre>
 
