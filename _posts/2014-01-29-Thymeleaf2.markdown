@@ -235,3 +235,18 @@ thymeleaf同样将两个比较常用的属性单独提取出来：**th:classappe
 <pre class="prettyprint linenums">
 &lt;tr th:each="prod : ${prods}" class="row" th:classappend="${prodStat.odd}? 'odd'"&gt;
 </pre>
+
+### Fixed-value boolean attributes
+
+XHTML/HTML5中有一些特殊的属性，它们要么以特定的固定值存在，要么不存在。例如**checked** ：
+<pre class="prettyprint linenums">
+&lt;input type="checkbox" name="option1" checked="checked" /&gt;
+&lt;input type="checkbox" name="option2" /&gt;
+</pre>
+
+thymeleaf为这些特殊的属性设定了标签：
+![](http://i4.piimg.com/5d04bc0e6b3d114c.png)
+
+<pre class="prettyprint linenums">
+&lt;input type="checkbox" name="active" th:checked="${user.active}" /&gt;
+</pre>
