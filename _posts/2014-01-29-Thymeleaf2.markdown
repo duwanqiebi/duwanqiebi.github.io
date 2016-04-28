@@ -2,7 +2,7 @@
 layout:     post
 category: [Thymeleaf, 框架学习]
 title:      "Thymeleaf学习(二)"
-subtitle:   "官方实例程序简介"
+subtitle:   "thymeleaf标准语法"
 date:       2016-04-15 12:00:00
 author:     "独顽且鄙"
 header-img: "img/post-bg-2015.jpg"
@@ -11,7 +11,6 @@ tags:
     - Thymeleaf
 ---
 
-# thymeleaf标准语法
 
 ## Message
 
@@ -19,7 +18,7 @@ tags:
 
 这是官方对于“信息”的定义，简要理解，就是具体的文本内容。通过property文件定义文本内容(国际化)，并在模版中通过key来应用。相应语法为： **#{...}** 
 
-### th:text
+#### th:text
 
 <pre class="prettyprint linenums html">
 &lt;p th:text="#{home.welcome}"&gt;Welcome to our grocery store!&lt;/p&gt;
@@ -39,7 +38,7 @@ thymeleaf会根据当前环境的语言设置(locale)来获得相应语言环境
 home.welcome = Welcome to our grocery store!
 </pre>
 
-### th:utext
+#### th:utext
 
 我们使用th:text已经可以显示一些基本的信息了，但是还有一些特殊的情况，例如我们想把信息中的一些字加粗:
 <pre class="prettyprint linenums html">
@@ -65,7 +64,7 @@ thymeleaf模板中可以通过${...}表达式来引用上下文中的对象。
 &lt;span th:text="${today}"&gt;13 february 2011&lt;/span&gt;
 </pre>
 
-### 基本对象(Expression Basic Objects)
+#### 基本对象(Expression Basic Objects)
 
 我们可以使用thymeleaf封装好的一些对象来提高表达式的灵活性，这些对象通过#来引用。
 
@@ -82,7 +81,7 @@ Established locale country: &lt;span th:text="${#locale.country}"&gt;US&lt;/span
 
 [Appendix A: Expression Basic Objects](http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html#appendix-a-expression-basic-objects)中可以具体了解到这些对象。
 
-### 功能对象(Expression Utility Objects)
+#### 功能对象(Expression Utility Objects)
 
 除了上面的那些基本对象，Thymeleaf还提供了一组功能性对象，这些功能性对象将会帮我们完成一些表达式中一些常用的功能。
 
@@ -155,7 +154,7 @@ url通过**@{...}** 语法在模板中声明，其中可以放入任何表达式
 
 ## 常量(Literals)
 
-### 文字与数字常量
+#### 文字与数字常量
 
 这个就是把从配置文件中读取key的方法变成了常量值。例：
 <pre class="prettyprint linenums">
@@ -166,7 +165,7 @@ url通过**@{...}** 语法在模板中声明，其中可以放入任何表达式
 &lt;/p&gt;
 </pre>
 
-### 布尔值与null常量
+#### 布尔值与null常量
 
 布尔值常量就是**true** 和**false** ,null常量就是**null** ，使用方式例：
 
@@ -188,7 +187,7 @@ url通过**@{...}** 语法在模板中声明，其中可以放入任何表达式
 
 ## 设置标签属性值(Setting Attribute Values)
 
-### 设置属性值--通用方法
+#### 设置属性值--通用方法
 
 **th:attr** 可以设置任意属性的值，用法如下：
 <pre class="prettyprint linenums">
@@ -203,7 +202,7 @@ url通过**@{...}** 语法在模板中声明，其中可以放入任何表达式
 &lt;/form&gt;
 </pre>
 
-### 设置属性值--指定方法
+#### 设置属性值--指定方法
 
 如果有一个特别常用的属性，每一次都要用**th:attr** 设置属性就会显得特别麻烦、臃肿。所以thymeleaf提供了一些属性来解决这个问题。
 <pre class="prettyprint linenums">
@@ -213,7 +212,7 @@ url通过**@{...}** 语法在模板中声明，其中可以放入任何表达式
 还有很多可以这样设置的属性：
 ![](http://i3.piimg.com/28300e22cf736149.png)
 
-### 同时设置多个属性值
+#### 同时设置多个属性值
 
 thymeleaf有两个特殊的属性**th:alt-title** ，**th:lang-xmllang** 能够将两种属性设为同一个值。
 <pre class="prettyprint linenums">
@@ -221,7 +220,7 @@ thymeleaf有两个特殊的属性**th:alt-title** ，**th:lang-xmllang** 能够�
      th:src="@{/images/gtvglogo.png}" th:alt-title="#{logo}" /&gt;
 </pre>
 
-### Appending and prepending
+#### Appending and prepending
 
 **th:attrappend** ,**th:attrprepend** 两个属性用来在原有属性的条件下添加。例:
 <pre class="prettyprint linenums">
@@ -237,7 +236,7 @@ thymeleaf同样将两个比较常用的属性单独提取出来：**th:classappe
 &lt;tr th:each="prod : ${prods}" class="row" th:classappend="${prodStat.odd}? 'odd'"&gt;
 </pre>
 
-### Fixed-value boolean attributes
+#### Fixed-value boolean attributes
 
 XHTML/HTML5中有一些特殊的属性，它们要么以特定的固定值存在，要么不存在。例如**checked** ：
 <pre class="prettyprint linenums">
