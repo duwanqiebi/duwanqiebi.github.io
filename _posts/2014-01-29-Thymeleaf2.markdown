@@ -211,3 +211,11 @@ url通过**@{...}** 语法在模板中声明，其中可以放入任何表达式
 
 还有很多可以这样设置的属性：
 ![](http://i3.piimg.com/28300e22cf736149.png)
+
+### 同时设置多个属性值
+
+thymeleaf有两个特殊的属性**th:alt-title** ，**th:lang-xmllang** 能够将两种属性设为同一个值。
+<pre class="prettyprint linenums">
+&lt;img src="../../images/gtvglogo.png" 
+     th:src="@{/images/gtvglogo.png}" th:alt-title="#{logo}" /&gt;
+</pre>
