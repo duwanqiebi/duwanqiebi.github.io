@@ -16,10 +16,9 @@ tags:
 #### th:each
 
 我们在模板中最常用的循环就是表格了，在示例程序中就有这样一个例子---**/WEB-INF/templates/product/list.html** ，在这个页面中，我们将查询出的所有产品放到list中，并将list存入上下文中。
+
 <pre class="prettyprint linenums">
-public void process(
-        HttpServletRequest request, HttpServletResponse response,
-        ServletContext servletContext, TemplateEngine templateEngine) {
+public void process(HttpServletRequest request, HttpServletResponse response,ServletContext servletContext, TemplateEngine templateEngine) {
 	ProductService productService = new ProductService();
     List<Product> allProducts = productService.findAll(); 	
 	WebContext ctx = new WebContext(request, servletContext, request.getLocale());
