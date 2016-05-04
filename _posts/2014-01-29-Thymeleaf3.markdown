@@ -1,0 +1,59 @@
+---
+layout:     post
+category: [Thymeleaf, 框架学习]
+title:      "Thymeleaf学习(三)"
+subtitle:   "thymeleaf流程控制"
+date:       2016-05-03 12:00:00
+author:     "独顽且鄙"
+header-img: "img/post-bg-2015.jpg"
+catalog:    true
+tags:
+    - Thymeleaf
+---
+
+## 迭代循环
+
+#### th:each
+
+我们在模板中最常用的循环就是表格了，在示例程序中就有这样一个例子---**/WEB-INF/templates/product/list.html** ，在这个页面中，我们将查询出的所有产品放到list中，并将list存入上下文中。
+<pre class="prettyprint linenums">
+public void process(
+        HttpServletRequest request, HttpServletResponse response,
+        ServletContext servletContext, TemplateEngine templateEngine) {
+
+    ProductService productService = new ProductService();
+    List<Product> allProducts = productService.findAll(); 
+
+    WebContext ctx = new WebContext(request, servletContext, request.getLocale());
+    ctx.setVariable("prods", allProducts);
+
+    templateEngine.process("product/list", ctx, response.getWriter());
+}
+</pre>
+
+在模板中，我们用th:each来进行循环
+<pre class="prettyprint linenums">
+&lt;table&gt;
+    &lt;tr&gt;
+       &lt;th&gt;NAME&lt;/th&gt;
+       &lt;th&gt;PRICE&lt;/th&gt;
+       &lt;th&gt;IN STOCK&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr th:each="prod : ${prods}"&gt;
+       &lt;td th:text="${prod.name}"&gt;Onions&lt;/td&gt;
+       &lt;td th:text="${prod.price}"&gt;2.41&lt;/td&gt;
+       &lt;td th:text="${prod.inStock}? #{true} : #{false}"&gt;yes&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+
+我们不仅可以通过**th:each** 来迭代List，还可以用来迭代很多对象，例如：
+- 所有实现了java.util.Iterable接口的对象
+- 所有实现了java.util.Map的对象
+- 数组
+- 所有对象--因为都可以看做只包含自身的列表
+
+#### 
+
+
+
