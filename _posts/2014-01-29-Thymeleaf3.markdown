@@ -20,7 +20,9 @@ tags:
 public void process(
         HttpServletRequest request, HttpServletResponse response,
         ServletContext servletContext, TemplateEngine templateEngine) {
-		
+	ProductService productService = new ProductService();
+    List<Product> allProducts = productService.findAll(); 	
+	WebContext ctx = new WebContext(request, servletContext, request.getLocale());
 }
 </pre>
 <pre class="prettyprint linenums">
