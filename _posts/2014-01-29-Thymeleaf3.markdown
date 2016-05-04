@@ -25,6 +25,8 @@ public void process(
 	WebContext ctx = new WebContext(request, servletContext, request.getLocale());
 }
 </pre>
+
+
 <pre class="prettyprint linenums">
 public void process(
         HttpServletRequest request, HttpServletResponse response,
