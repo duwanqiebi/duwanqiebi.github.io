@@ -85,5 +85,46 @@ Thymeleaf提供了一组迭代状态，方便在循环时使用
 &lt;/table&gt;
 </pre>
 
+在上面的代码中，**iterStat**是我们创建的迭代状态变量。如果没有创建，Thymeleaf会自动创建一个状态变量，名字就是迭代变量的名字加上**Stat**后缀：
+<pre class="prettyprint linenums">
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;NAME&lt;/th&gt;
+    &lt;th&gt;PRICE&lt;/th&gt;
+    &lt;th&gt;IN STOCK&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr th:each="prod : ${prods}" th:class="${prodStat.odd}? 'odd'"&gt;
+    &lt;td th:text="${prod.name}"&gt;Onions&lt;/td&gt;
+    &lt;td th:text="${prod.price}"&gt;2.41&lt;/td&gt;
+    &lt;td th:text="${prod.inStock}? #{true} : #{false}"&gt;yes&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</pre>
 
+## 条件表达式
+
+#### if unless
+
+例：
+<pre class="prettyprint linenums">
+&lt;a href="comments.html"
+   th:href="@{/product/comments(prodId=${prod.id})}" 
+   th:if="${not #lists.isEmpty(prod.comments)}"&gt;view&lt;/a&gt;
+</pre>
+
+代码运行的结果就是，如果prod.comments不是空的，就输出<a>标签，如下图：
+![](http://i3.piimg.com/00de6777ea8d3f44.png)
+
+#### switch
+
+例：
+<pre class="prettyprint linenums">
+&lt;div th:switch="${user.role}"&gt;
+  &lt;p th:case="'admin'"&gt;User is an administrator&lt;/p&gt;
+  &lt;p th:case="#{roles.manager}"&gt;User is a manager&lt;/p&gt;
+  &lt;p th:case="*"&gt;User is some other thing&lt;/p&gt;
+&lt;/div&gt;
+</pre>
+
+其中**th:case="*"**就是switch中的default
 
