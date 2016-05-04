@@ -58,5 +58,32 @@ public void process(
 
 #### 迭代状态
 
+Thymeleaf提供了一组迭代状态，方便在循环时使用
+
+- **index** ，当前索引，从0开始
+- **count** ，当前索引，从0开始
+- **size** ，被迭代对象的总数，例如List的size
+- **current** ，The iter variable for each iteration(官方原文，没太明白)
+- **even/odd** ，boolean值，当前的迭代是否是奇数或偶数
+- **first/last** ，boolean值，当前的迭代是否是第一个或最后一个
+
+我们通常都有这样的需求，表格为了美观，会隔行变色。
+![](http://i3.piimg.com/00de6777ea8d3f44.png)
+这时我们就可以使用迭代变量的**even/odd** 状态，使用方法如下：
+<pre class="prettyprint linenums">
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;NAME&lt;/th&gt;
+    &lt;th&gt;PRICE&lt;/th&gt;
+    &lt;th&gt;IN STOCK&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr th:each="prod,iterStat : ${prods}" th:class="${iterStat.odd}? 'odd'"&gt;
+    &lt;td th:text="${prod.name}"&gt;Onions&lt;/td&gt;
+    &lt;td th:text="${prod.price}"&gt;2.41&lt;/td&gt;
+    &lt;td th:text="${prod.inStock}? #{true} : #{false}"&gt;yes&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+
 
 
