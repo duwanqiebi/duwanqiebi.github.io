@@ -112,7 +112,7 @@ Thymeleaf提供了一组迭代状态，方便在循环时使用
    th:if="${not #lists.isEmpty(prod.comments)}"&gt;view&lt;/a&gt;
 </pre>
 
-代码运行的结果就是，如果prod.comments不是空的，就输出<a>标签，如下图：
+代码运行的结果就是，如果prod.comments不是空的，就输出&lt;a&gt;标签，如下图：
 ![](http://i3.piimg.com/00de6777ea8d3f44.png)
 
 #### switch
