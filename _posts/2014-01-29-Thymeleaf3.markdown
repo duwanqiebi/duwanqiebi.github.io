@@ -50,6 +50,7 @@ public void process(
 </pre>
 
 我们不仅可以通过**th:each** 来迭代List，还可以用来迭代很多对象，例如：
+
 - 所有实现了java.util.Iterable接口的对象
 - 所有实现了java.util.Map的对象
 - 数组
