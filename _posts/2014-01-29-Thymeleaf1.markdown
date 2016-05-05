@@ -5,7 +5,7 @@ title:      "Thymeleaf学习(一)"
 subtitle:   "官方实例程序简介"
 date:       2016-04-15 12:00:00
 author:     "独顽且鄙"
-header-img: "img/post-bg-2015.jpg"
+header-img: "img/Thymeleaf.jpg"
 tags:
     - Thymeleaf
 ---

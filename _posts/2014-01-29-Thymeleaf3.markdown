@@ -5,7 +5,7 @@ title:      "Thymeleaf学习(三)"
 subtitle:   "thymeleaf流程控制"
 date:       2016-05-03 12:00:00
 author:     "独顽且鄙"
-header-img: "img/post-bg-2015.jpg"
+header-img: "img/Thymeleaf.jpg"
 catalog:    true
 tags:
     - Thymeleaf
