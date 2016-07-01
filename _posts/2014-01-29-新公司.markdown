@@ -1,14 +1,14 @@
 ---
 layout:     post
-category: [Thymeleaf, 框架学习]
-title:      "Thymeleaf学习(三)"
-subtitle:   "thymeleaf流程控制"
-date:       2016-05-03 12:00:00
+category: [胡言乱语]
+title:      "新公司  新起点"
+subtitle:   ""
+date:       2016-07-01 11:07:00
 author:     "独顽且鄙"
 header-img: "img/Thymeleaf.jpg"
 catalog:    true
 tags:
-    - Thymeleaf
+    - 胡言乱语
 ---
 
 在非互联网公司做了一年程序员后,我愈发感觉自身技术的局限性。想要突破这个极限,最简单最直接的方法就是跳出这个圈,寻找一个技术提升大的机会。
@@ -20,6 +20,4 @@ tags:
 在技术这条路上,任重而道远,我一定会疯狂学习,追上我前面的人。
 
 我离我的理想又近了一步!!
-
-其中**th:case="*"**就是switch中的default
 
