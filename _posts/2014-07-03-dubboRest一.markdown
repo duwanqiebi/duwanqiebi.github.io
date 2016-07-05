@@ -74,7 +74,7 @@ REST,是Representational State Transfer的缩写，翻译来就是表现层状�
 >
 >- **调整Demo应用：**  暂时将dubbo的demo应用调整并改写以主要演示REST功能、Dubbo协议的新序列化方式、基于Java代码的Spring配置等等。
 >
->- **修正了dubbo的bug **  包括配置、序列化、管理界面等等的bug。
+>- **修正了dubbo的bug**  包括配置、序列化、管理界面等等的bug。
 >
 >**注：dubbox和dubbo 2.x是兼容的，没有改变dubbo的任何已有的功能和配置方式（除了升级了spring之类的版本）**
 
