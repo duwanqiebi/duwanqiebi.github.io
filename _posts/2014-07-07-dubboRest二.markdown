@@ -11,19 +11,17 @@ tags:
     - dubbo
 ---
 
-## Rest架构
+## 定制序列化
 
-之前在学习springMVC时候，看到过@RestController这样的一个注解，但是当时也只是知道被@RestController注解的控制器中的方法中返回的内容都会加入到ResponseBody中，而不是返回一个视图，并没有深入的去了解过Rest究竟是什么东西。
+TODO
 
-#### Rest
+## 校验输入参数
 
 REST,是Representational State Transfer的缩写，翻译来就是表现层状态转移。这里有几个非常重要的概念
 
-- **1.资源(Resources):** 资源是Representational State Transfer省略的主语。网络上的一切都可以当作资源，我理解的资源就是数据。
-- **2.表现层(Representational):** 表现层就是资源具体的表现形式，通常使用的有JSON，XML，TEXT等。
-- **3.转移(Transfer):** 转移就是通过HTTP的动词（GET,POST,PUT,DELETE等），对资源进行具体的操作，使资源的具体状态得到改变，并通过表现层来表现。
+#### 使用Java标准的bean validation annotation（JSR 303)校验输入参数
 
-#### REST的优点
+TODO
 
 > 以下摘自维基百科：
 >
