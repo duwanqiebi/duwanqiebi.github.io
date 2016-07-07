@@ -1,8 +1,8 @@
 ---
 layout:     post
 category: [框架学习,dubbo,Rest接口]
-title:      "dubbox Rest接口学习笔记"
-subtitle:   ""
+title:      "dubbox Rest接口学习笔记(一)"
+subtitle:   "理解基本概念"
 date:       2016-07-03 11:07:00
 author:     "独顽且鄙"
 header-img: "img/HelloWorld.jpg"
@@ -81,4 +81,4 @@ REST,是Representational State Transfer的缩写，翻译来就是表现层状�
 
 ## 搭建开发环境
 
-todo
+我利用springBoot和dubbox搭建了一个开发环境。下一篇博客将记录我在实际工作中遇到的一些问题。
