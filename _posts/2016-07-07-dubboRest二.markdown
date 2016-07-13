@@ -13,7 +13,28 @@ tags:
 
 ## 定制序列化
 
-TODO
+在rest服务中,我们通常会接收一个xml或json格式的参数报文,并将返回以xml或json格式返回给调用者。
+
+REST的底层实现会在service的对象和JSON/XML数据格式之间自动做序列化/反序列化。例如,一个简单的User类:
+
+<pre>
+public class User implements Serializable {
+    
+    private String id;
+    private String name;
+      
+    //省略构造方法和getter/setter
+}
+</pre>
+
+Producer中的接口如下:
+<pre>
+@Post
+@Path("/getuser")
+User getUser(User user){
+    return user;
+}
+</pre>
 
 ## 校验输入参数
 
