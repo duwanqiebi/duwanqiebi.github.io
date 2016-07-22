@@ -1,7 +1,7 @@
 ---
 layout:     post
 category: [压力测试]
-title:      "<span>利用apache的ab工具进行压力测试</span>"
+title:      "<span style="color:red">利用apache的ab工具进行压力测试</span>"
 subtitle:   ""
 date:       2016-07-21 23:18:00
 author:     "独顽且鄙"
