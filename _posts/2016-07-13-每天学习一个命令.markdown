@@ -156,3 +156,29 @@ cal，即calendar，查看日历，如果只有一个参数，则表示年份，
 -j  显示在当年中的第几天（一年日期按天算，从1月1号算起，默认显示当前月在一年中的天数）
 -y  显示当前年份的日历
 </pre>
+
+#### kill
+
+kill [参数] [进程号]
+
+向进程发送指定信号，所有信号如下：
+
+<pre>
+zhangqiang@localhost:/|⇒  kill -l
+HUP INT QUIT ILL TRAP ABRT EMT FPE KILL BUS SEGV SYS PIPE ALRM TERM URG STOP TSTP CONT CHLD TTIN TTOU IO XCPU XFSZ VTALRM PROF WINCH INFO USR1 USR2
+</pre>
+
+常用信号：
+
+<pre>
+HUP    1    终端断线
+INT    2    中断（同 Ctrl + C）
+QUIT   3    退出（同 Ctrl + \）
+TERM   15   终止
+KILL   9    强制终止
+CONT   18   继续（与STOP相反， fg/bg命令）
+STOP   19   暂停（同 Ctrl + Z）
+</pre>
+
+
+
