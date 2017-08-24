@@ -6,7 +6,7 @@ email: 18810295909@qq.com
 description: "独顽且鄙的博客"
 keyword: "独顽且鄙"
 url: "http://duwanqiebi.github.io"              # your host, for absolute URL
-baseurl: "http://duwanqiebi.github.io"                             # for example, '/blog' if your blog hosted on 'host/blog'
+baseurl: "https://duwanqiebi.github.io"                             # for example, '/blog' if your blog hosted on 'host/blog'
 
 
 # Featured Tags
