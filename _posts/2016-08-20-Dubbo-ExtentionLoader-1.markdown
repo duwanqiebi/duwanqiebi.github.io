@@ -51,7 +51,7 @@ com.dubbo.mylearncode.spi.GoCoder
 <pre class="prettyprint">
 public class Main {
     public static void main(String[] args){
-        ServiceLoader<Coder> serviceLoader = ServiceLoader.load(Coder.class);
+        ServiceLoader&lt;Coder&gt; serviceLoader = ServiceLoader.load(Coder.class);
         for(Coder coder : serviceLoader){
             coder.code();
         }
