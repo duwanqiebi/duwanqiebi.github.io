@@ -48,16 +48,7 @@ com.dubbo.mylearncode.spi.GoCoder
 </pre>
 
 
-<pre class="prettyprint">
-public class Main {
-    public static void main(String[] args){
-        ServiceLoader<Coder> serviceLoader = ServiceLoader.load(Coder.class);
-        for(Coder coder : serviceLoader){
-            coder.code();
-        }
-    }
-}
-</pre>
+
 
 
 执行Main类，输出的结果为：
