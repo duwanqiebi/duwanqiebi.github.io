@@ -41,6 +41,7 @@ public class GoCoder implements Coder {
 </pre>
 
 META-INF/services下创建文件名：com.dubbo.mylearncode.spi.code（即Coder接口的全路径名）
+
 <pre class="prettyprint">
 com.dubbo.mylearncode.spi.JavaCoder
 com.dubbo.mylearncode.spi.GoCoder
@@ -120,6 +121,7 @@ public static <T> ExtensionLoader<T> getExtensionLoader(Class<T> type) {
     return loader;
 }
 </pre>
+
 ExtensionLoader的主入口是一个静态方法getExtensionLoader，接受一个class类型的参数，代表着要获取哪个接口的扩展点。ExtensionLoader是通过@SPI注解来标记一个接口是否可以使用ExtensionLoader获取扩展，所以在指定接口没有@SPI注解时会直接抛出异常。EXTENSION_LOADERS是一个static的全局静态缓存，存着class与ExtensionLoader的对应map，所以先会在缓存里找对应的ExtensionLoader，如果找不到，就new一个ExtensionLoader并加入缓存中。下面看看new ExtensionLoader<T>(type)是怎么实现的。
 
 ### 构造方法
@@ -173,6 +175,7 @@ loadFile是ExtensionLoader加载spi配置文件的方法，是一个比较重要
 
 
 下面是loadFile方法中解析class的其中较关键的部分:
+
 <pre class="prettyprint">
 if (clazz.isAnnotationPresent(Adaptive.class)) {    //如果该实现类有@Adaptive注解
     if(cachedAdaptiveClass == null) {
