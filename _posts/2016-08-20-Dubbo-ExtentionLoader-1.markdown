@@ -86,13 +86,7 @@ ExtensionLoader的用法不做即录，直接记录阅读源码的过程。
 
 缓存类型 | 缓存名 | 作用
 --- | --- | ---
-ConcurrentMap<Class<?>, String> | cachedNames | 非@Adaptive的实现类的名字缓存  class -> 扩展点名字(即配置文件中的key)
-Holder<Map<String, Class<?>>> | cachedClasses | 非@Adaptive的实现类的名字缓存，与上面相反
-Map<String, Activate> |  cachedActivates | @Activate的实现类缓存  名字 -> Activate对象
-Class<?> |  cachedAdaptiveClass | @Adaptive的实现类类缓存（从代码中看出,只允许一个Adaptive实现类)
-Holder<Object> | cachedAdaptiveInstance | @Adaptive注解的实例缓存
-ConcurrentMap<String, Holder<Object>> | cachedInstances | 非@Adaptive实现类的实例缓存
-String | cachedDefaultName | 默认扩展的名字，即@SPI的value值
+1 | 1 | 1
 
 
 #### 入口
