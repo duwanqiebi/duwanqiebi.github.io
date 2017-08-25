@@ -139,3 +139,158 @@ private ExtensionLoader(Class type) {
 进入私有构造方法后，主要对两个属性进行了赋值。type，即ExtensionLoader的泛型类型；objectFactory为ExtensionFactory类型，之后在动态注入时会用到。
 
 
+## 主要方法
+
+
+<pre class="prettyprint">
+private static final ExtensionLoader&lt;Container&gt; loader = ExtensionLoader.getExtensionLoader(Container.class);
+</pre>
+
+上面一行代码是在com.alibaba.dubbo.container.Main获取ExtensionLoader的代码，在这行代码执行之后，loader中的关于扩展点的缓存还尚未加载，那缓存是什么时候加载的呢？ExtensionLoader针对spi机制进行了扩展，只有在真正用到的时候才会进行加载。
+
+### T getExtension(String name) 根据name获取类实例对象
+
+
+<pre class="prettyprint">
+getExtension(name)    在cachedInstances缓存中找，找不到进入下面
+    -> createExtension(name)
+        -> getExtensionClasses()  在cachedClasses缓存中找，找不到进入下面
+            -> loadExtensionClasses()
+                ->loadFile(extensionClasses,filePath)  读取文件，填充缓存
+    -> injectExtension(T instance)
+    
+</pre>
+
+#### loadFile()
+
+loadFile是ExtensionLoader加载spi配置文件的方法，是一个比较重要的方法，不只是在getExtension(String name)方法中用到，在所有类似的方法（例如：getExtensionClass(String name),getDefaultExtensionName()等）缓存还未初始化时都会调用。
+
+加载配置文件时，dubbo会从三个位置去找文件，即：
+- META-INF/services/
+- META-INF/dubbo/
+- META-INF/services/internal/
+但是dubbo默认都将配置文件放到了META-INF/services/internal/路径下面
+
+
+下面是loadFile方法中解析class的其中较关键的部分:
+
+<pre class="prettyprint">
+if (clazz.isAnnotationPresent(Adaptive.class)) {    //如果该实现类有@Adaptive注解
+    if(cachedAdaptiveClass == null) {
+        cachedAdaptiveClass = clazz;
+    } else if (! cachedAdaptiveClass.equals(clazz)) {
+        throw new IllegalStateException("More than 1 adaptive class found: "
+            + cachedAdaptiveClass.getClass().getName()
+            + ", " + clazz.getClass().getName());
+    }
+} else {    //如果该实现类无@Adaptive注解
+    try {
+        clazz.getConstructor(type); //查看该实现类是否有type的构造方法,没有则直接进入异常
+        //如果有type类型的构造方法,则为wrapper类。加入wrapper缓存
+        Set&lt;Class&lt;?&gt;&gt; wrappers = cachedWrapperClasses;
+        if (wrappers == null) {
+            cachedWrapperClasses = new ConcurrentHashSet&lt;Class&lt;?&gt;&gt;();
+            wrappers = cachedWrapperClasses;
+        }
+        wrappers.add(clazz);
+} catch (NoSuchMethodException e) {     //没有type类型的构造方法
+    clazz.getConstructor();
+    if (name == null || name.length() == 0) {
+        name = findAnnotationName(clazz);
+        if (name == null || name.length() == 0) {
+            if (clazz.getSimpleName().length() &gt; type.getSimpleName().length()
+                && clazz.getSimpleName().endsWith(type.getSimpleName())) {
+                name = clazz.getSimpleName().substring(0, clazz.getSimpleName().length() - type.getSimpleName().length()).toLowerCase();
+            } else {
+                throw new IllegalStateException("No such extension name for the class " + clazz.getName() + " in the config " + url);
+            }
+        }
+    }
+    String[] names = NAME_SEPARATOR.split(name);
+    if (names != null && names.length > 0) {
+        Activate activate = clazz.getAnnotation(Activate.class);
+        if (activate != null) {
+            cachedActivates.put(names[0], activate);
+        }
+        for (String n : names) {
+            if (! cachedNames.containsKey(clazz)) {
+                cachedNames.put(clazz, n);
+            }
+            Class&lt;?&gt; c = extensionClasses.get(n);
+            if (c == null) {
+                extensionClasses.put(n, clazz);
+            } else if (c != clazz) {
+                throw new IllegalStateException("Duplicate extension " + type.getName() + " name " + n + " on " + c.getName() + " and " + clazz.getName());
+            }
+        }
+    }
+}
+</pre>
+
+可以看出，实现类被分成两种类型进行了解析。有@Adaptive注解、无@Adaptive注解。而无@Adaptive注解又分为两种，Wrapper与普通实现类，wrapper即对普通的实现类又进行了一层包装，必要特征即：构造方法有一个当前类的参数。
+1. 如果实现类有@Adaptive注解，则直接将cachedAdaptiveClass赋值。（如果之前有值且与当前值不相等，直接抛异常）
+2. 如果为wrapper类，则加入cachedWrapperClasses缓存
+3. 其余的即为普通实现类，则加入cachedNames缓存。另，如果有@Active注解的，则加入cachedActivates缓存。（@Active注解还不太明白，后续看代码看到的时候继续补充）
+4.最后loadFile方法结束后，会将name-class的缓存加入cachedClasses（getExtensionClasses()方法中）
+
+#### createExtension(String name)  EXtensionLoader的实例化
+
+之前说到SPI的其中一个缺点就是一次会实例化所有的配置类。而在createExtension(String name)方法中可以看出，ExtensionLoader在使用一个类的时候才会去实例化这个类。
+
+
+<pre class="prettyprint">
+T instance = (T) EXTENSION_INSTANCES.get(clazz);
+if (instance == null) {
+    EXTENSION_INSTANCES.putIfAbsent(clazz, (T) clazz.newInstance());
+    instance = (T) EXTENSION_INSTANCES.get(clazz);
+}
+injectExtension(instance);  //注入实例属性
+Set&lt;Class&lt;?&gt;&gt; wrapperClasses = cachedWrapperClasses;
+//如果有wrapper,为wrapper,否则直接返回。后面的wrapper会覆盖前面的wrapper
+if (wrapperClasses != null && wrapperClasses.size() &gt; 0) {
+    for (Class&lt;?&gt; wrapperClass : wrapperClasses) {
+        instance = injectExtension((T) wrapperClass.getConstructor(type).newInstance(instance));
+    }
+}
+return instance;
+</pre>
+
+
+方法首先会到EXTENSION_INSTANCES缓存中取得对象实例，如果没有，则直接利用反射创建一个新对象，并进行属性的注入。如果有wrapper，则创建wrapper对象。通过Wrapper类可以把所有扩展点公共逻辑移至Wrapper中。新加的Wrapper在所有的扩展点上添加了逻辑，有些类似AOP（Wraper代理了扩展点） （目前对wrapper理解还不是特别深刻，后续看代码继续补充）
+
+
+
+
+#### injectExtension(T instance) ExtensionLoader的自动注入
+
+
+<pre class="prettyprint">
+for (Method method : instance.getClass().getMethods()) {
+    if (method.getName().startsWith("set")
+         && method.getParameterTypes().length == 1
+          && Modifier.isPublic(method.getModifiers())) {  //寻找setter方法
+        Class&lt;?&gt; pt = method.getParameterTypes()[0];
+        try {
+            String property = method.getName().length() &gt; 3 ? method.getName().substring(3, 4).toLowerCase() + method.getName().substring(4) : "";
+            Object object = objectFactory.getExtension(pt, property);
+            if (object != null) {
+                method.invoke(instance, object);
+            }
+        } catch (Exception e) {
+            logger.error("fail to inject via method " + method.getName()
+                   + " of interface " + type.getName() + ": " + e.getMessage(), e);
+        }
+    }
+}
+</pre>
+
+ExtensionLoader会寻找符合条件的setter方法，并利用objectFactory获取对象进行注入。这里获取的对象是通过getAdaptiveExtension()方法获取的自适应对象。@Adaptive我会单独记录一篇文章。
+
+## 其他常用方法（非Adaptive、Active）
+
+- T getDefaultExtension() 获取默认的扩展。
+- String getDefaultExtensionName() 获取默认扩展名，即SPI注解中配置的值
+- boolean hasExtension(String name)  是否有指定的扩展
+- Set<String> getSupportedExtensions() 获取所有支持的扩展
+
+
