@@ -59,7 +59,9 @@ public class Main {
 }
 </pre>
 
+
 执行Main类，输出的结果为：
+
 
 <pre class="prettyprint">
 code in JAVA
