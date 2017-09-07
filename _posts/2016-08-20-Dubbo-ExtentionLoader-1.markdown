@@ -233,7 +233,9 @@ if (clazz.isAnnotationPresent(Adaptive.class)) {    //如果该实现类有@Adap
 1. 如果实现类有@Adaptive注解，则直接将cachedAdaptiveClass赋值。（如果之前有值且与当前值不相等，直接抛异常）
 2. 如果为wrapper类，则加入cachedWrapperClasses缓存
 3. 其余的即为普通实现类，则加入cachedNames缓存。另，如果有@Active注解的，则加入cachedActivates缓存。（@Active注解还不太明白，后续看代码看到的时候继续补充）
-4.最后loadFile方法结束后，会将name-class的缓存加入cachedClasses（getExtensionClasses()方法中）
+4. 最后loadFile方法结束后，会将name-class的缓存加入cachedClasses（getExtensionClasses()方法中）
+
+另:如果是有多个Wrapper实现类时,是会进行多层包装的。例如Protocol接口,可能最外层是 **ProtocolFilterWrapper** 包装了 **ProtocolListenerWrapper** ,而 **ProtocolListenWrapper** 里面才包装着具体的实现类(例如 **DubboProtocol** )。
 
 #### createExtension(String name)  EXtensionLoader的实例化
 
