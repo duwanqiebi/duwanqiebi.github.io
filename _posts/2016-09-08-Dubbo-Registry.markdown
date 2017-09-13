@@ -73,7 +73,8 @@ public class RegistryProtocol implements Protocol {
 
 **RegistryFactory**的作用是用来获取Registry对象,RegistryFactory的体系如下图:
 
-[RegistryFactory](http://zqimage.oss-cn-beijing.aliyuncs.com/dubbo%E6%BA%90%E7%A0%81/RegistryFactory.png)
+
+![RegistryFactory](http://zqimage.oss-cn-beijing.aliyuncs.com/dubbo%E6%BA%90%E7%A0%81/RegistryFactory.png)
 
 先看下RegistryFactory的代码:
 
