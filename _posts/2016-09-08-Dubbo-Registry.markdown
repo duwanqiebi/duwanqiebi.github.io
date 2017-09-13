@@ -106,7 +106,7 @@ public class RegistryFactory$Adpative implements RegistryFactory {
         return extension.getRegistry(arg0);
     }
 }
-<pre>
+</pre>
 
 #### AbstractRegistryFactory
 
