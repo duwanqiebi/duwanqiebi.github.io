@@ -19,7 +19,7 @@ tags:
 **ServiceConfig**
 
 <pre class="prettyprint">
-private void doExportUrlsFor1Protocol(ProtocolConfig protocolConfig, List<URL> registryURLs) {
+private void doExportUrlsFor1Protocol(ProtocolConfig protocolConfig, List&lt;URL&gt; registryURLs) {
     /* .......省略.......... */
     Exporter<?> exporter = protocol.export(invoker);
     /* .......省略.......... */
@@ -29,7 +29,7 @@ private void doExportUrlsFor1Protocol(ProtocolConfig protocolConfig, List<URL> r
 **ReferenceConfig**
 
 <pre class="printprint">
-private T createProxy(Map<String, String> map) {
+private T createProxy(Map&lt;String, String&gt; map) {
     /* .......省略.......... */
     refprotocol.refer(interfaceClass, url)
     /* .......省略.......... */
@@ -46,7 +46,7 @@ RegistryProtocol为Protocol接口的实现类,接口的两个重要方法为**ex
 public class RegistryProtocol implements Protocol {
     private RegistryFactory registryFactory;
     
-    public <T> Exporter<T> export(final Invoker<T> originInvoker) throws RpcException {
+    public &lt;T&gt; Exporter&lt;T&gt; export(final Invoker&lt;T&gt; originInvoker) throws RpcException {
         ...
         //registry provider
         final Registry registry = getRegistry(originInvoker);
@@ -55,7 +55,7 @@ public class RegistryProtocol implements Protocol {
         ...
     }
     
-    private Registry getRegistry(final Invoker<?> originInvoker){
+    private Registry getRegistry(final Invoker&lt;?>&gt;originInvoker){
         URL registryUrl = originInvoker.getUrl();
         if (Constants.REGISTRY_PROTOCOL.equals(registryUrl.getProtocol())) {
             String protocol = registryUrl.getParameter(Constants.REGISTRY_KEY, Constants.DEFAULT_DIRECTORY);
