@@ -21,13 +21,13 @@ tags:
 <pre class="prettyprint">
 private void doExportUrlsFor1Protocol(ProtocolConfig protocolConfig, List&lt;URL&gt; registryURLs) {
     /* .......省略.......... */
-    Exporter<?> exporter = protocol.export(invoker);
+    Exporter&lt;?&gt; exporter = protocol.export(invoker);
     /* .......省略.......... */
 }
 </pre>
 
 
- **ReferenceConfig**
+**ReferenceConfig**
 
 <pre class="printprint">
 private T createProxy(Map&lt;String, String&gt; map) {
