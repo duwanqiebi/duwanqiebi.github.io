@@ -110,7 +110,7 @@ public class RegistryFactory$Adpative implements RegistryFactory {
 
 #### AbstractRegistryFactory
 
-<pre class="prettyprint>
+<pre class="prettyprint">
 public Registry getRegistry(URL url) {
 	url = url.setPath(RegistryService.class.getName())
 			.addParameter(Constants.INTERFACE_KEY, RegistryService.class.getName())
