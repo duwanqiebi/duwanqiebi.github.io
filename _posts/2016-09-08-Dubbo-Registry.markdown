@@ -26,7 +26,8 @@ private void doExportUrlsFor1Protocol(ProtocolConfig protocolConfig, List&lt;URL
 }
 </pre>
 
-**ReferenceConfig**
+
+ **ReferenceConfig**
 
 <pre class="printprint">
 private T createProxy(Map&lt;String, String&gt; map) {
@@ -36,7 +37,7 @@ private T createProxy(Map&lt;String, String&gt; map) {
 }
 </pre>
 
-在ServiceConfig、ReferenceConfig两个API中, **protocol**、**refprotocol**的值都是 **ExtensionLoader.getExtensionLoader(Protocol.class).getAdaptiveExtension()**。
+在ServiceConfig、ReferenceConfig两个API中, **protocol** 、 **refprotocol** 的值都是 **ExtensionLoader.getExtensionLoader(Protocol.class).getAdaptiveExtension()** 。
 即Protocol$Adaptive这个动态生成类。在这个动态类中,会取得url.getProtocol(),并获得对应name的Extension。即**RegistryProtocol**。
 
 RegistryProtocol为Protocol接口的实现类,接口的两个重要方法为**export(Invoker<T> invoker)**,**refer(Class<T> type, URL url)**,分别为暴露服务、引用服务。
